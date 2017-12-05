@@ -8,6 +8,30 @@
 
 #import "MRCTabBarViewModel.h"
 
+@interface MRCTabBarViewModel ()
+
+
+@property (nonatomic, strong, readwrite) RTUIComponentViewModel *uiComponentViewModel;
+
+@property (nonatomic, strong, readwrite) RTNoteViewModel *noteViewModel;
+
+@property (nonatomic, strong, readwrite) RTMagicViewModel *magicViewModel;
+
+@property (nonatomic, strong, readwrite) RTExpandViewModel *expandViewModel;
+
+@end
+
 @implementation MRCTabBarViewModel
+
+- (void)initialize
+{
+    [super initialize];
+    
+    _uiComponentViewModel = [[RTUIComponentViewModel alloc] init];
+    _noteViewModel = [[RTNoteViewModel alloc] init];
+    _magicViewModel = [[RTMagicViewModel alloc] init];
+    _expandViewModel = [[RTExpandViewModel alloc] init];
+    
+}
 
 @end

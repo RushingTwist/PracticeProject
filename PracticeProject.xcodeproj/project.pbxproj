@@ -35,6 +35,7 @@
 		BA7DFB411F2769D600727B1F /* PracticeProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB401F2769D600727B1F /* PracticeProjectUITests.m */; };
 		BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */; };
 		BA7DFBF41F27880800727B1F /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFBF31F27880800727B1F /* YYFPSLabel.m */; };
+		BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB322191FD691DF00E7C119 /* RTRACOperation.m */; };
 		D41ADCC652F2B6D1D5C93BA0 /* libPods-PracticeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E538F72997E14508EAB975E /* libPods-PracticeProject.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		0DC278619CAF8940641F31D1 /* Pods-PracticeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PracticeProject/Pods-PracticeProject.release.xcconfig"; sourceTree = "<group>"; };
 		4E538F72997E14508EAB975E /* libPods-PracticeProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PracticeProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D949701D78B2F402BCBD6A /* Pods-PracticeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PracticeProject/Pods-PracticeProject.debug.xcconfig"; sourceTree = "<group>"; };
+		BA1B36DA1F31642800965ACA /* RTMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTMacro.h; sourceTree = "<group>"; };
 		BA490A6B1F284844003954EF /* MRCNavigationControllerStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCNavigationControllerStack.h; sourceTree = "<group>"; };
 		BA490A6C1F284844003954EF /* MRCNavigationControllerStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCNavigationControllerStack.m; sourceTree = "<group>"; };
 		BA490A6E1F284898003954EF /* MRCNavigationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCNavigationProtocol.h; sourceTree = "<group>"; };
@@ -120,6 +122,8 @@
 		BA7DFB621F27766300727B1F /* PracticeProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PracticeProject.pch; sourceTree = "<group>"; };
 		BA7DFBF21F27880800727B1F /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		BA7DFBF31F27880800727B1F /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		BAB322181FD691DF00E7C119 /* RTRACOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTRACOperation.h; sourceTree = "<group>"; };
+		BAB322191FD691DF00E7C119 /* RTRACOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTRACOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +361,7 @@
 				BA7DFB5E1F27753E00727B1F /* RTAppDelegate.h */,
 				BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */,
 				BA490A651F284714003954EF /* Base */,
+				BAB3221B1FD6923500E7C119 /* Tests */,
 				BA7DFB4F1F276A3100727B1F /* ★★★ Modules */,
 				BA7DFB551F276A3100727B1F /* ★★★ Utils */,
 				BA7DFB4E1F276A3100727B1F /* ★★★ Category */,
@@ -409,14 +414,14 @@
 			children = (
 				BA7DFB521F276A3100727B1F /* ViewController      ★★★ */,
 				BA7DFB511F276A3100727B1F /* View                      ★★★ */,
-				BA7DFB501F276A3100727B1F /* Model                    ★★★ */,
-				BA7DFB531F276A3100727B1F /* ViewModel            ★★★ */,
+				BA7DFB501F276A3100727B1F /* ViewModel                    ★★★ */,
+				BA7DFB531F276A3100727B1F /* Model            ★★★ */,
 			);
 			name = "★★★ Modules";
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		BA7DFB501F276A3100727B1F /* Model                    ★★★ */ = {
+		BA7DFB501F276A3100727B1F /* ViewModel                    ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490AE71F2873F7003954EF /* UIComponent */,
@@ -424,7 +429,7 @@
 				BA490AE51F2873F7003954EF /* Magic */,
 				BA490AE41F2873F7003954EF /* Expand */,
 			);
-			name = "Model                    ★★★";
+			name = "ViewModel                    ★★★";
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -452,7 +457,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		BA7DFB531F276A3100727B1F /* ViewModel            ★★★ */ = {
+		BA7DFB531F276A3100727B1F /* Model            ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490ADB1F2873A2003954EF /* UIComponent */,
@@ -460,7 +465,7 @@
 				BA490AD91F2873A2003954EF /* Magic */,
 				BA490AD81F2873A2003954EF /* Expand */,
 			);
-			name = "ViewModel            ★★★";
+			name = "Model            ★★★";
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
@@ -477,9 +482,19 @@
 			children = (
 				BA7DFBF21F27880800727B1F /* YYFPSLabel.h */,
 				BA7DFBF31F27880800727B1F /* YYFPSLabel.m */,
+				BA1B36DA1F31642800965ACA /* RTMacro.h */,
 			);
 			name = "★★★ Utils";
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BAB3221B1FD6923500E7C119 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BAB322181FD691DF00E7C119 /* RTRACOperation.h */,
+				BAB322191FD691DF00E7C119 /* RTRACOperation.m */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		D25C25BC8EBA530E16EBC477 /* Frameworks */ = {
@@ -686,6 +701,7 @@
 				BA490A7A1F284898003954EF /* MRCViewModel.m in Sources */,
 				BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */,
 				BA490AF31F2874C6003954EF /* RTExpandViewController.m in Sources */,
+				BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */,
 				BA490AF91F28794B003954EF /* RTNoteViewModel.m in Sources */,
 				BA490A7E1F2849B0003954EF /* MRCRouter.m in Sources */,
 				BA490A941F286CD4003954EF /* MRCViewController.m in Sources */,
@@ -846,7 +862,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QT88ZY57P2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/lynn/Desktop/PracticeProject/PracticeProject/PracticeProject.pch;
+				GCC_PREFIX_HEADER = /Users/lynn/Desktop/github/PracticeProject/PracticeProject/PracticeProject.pch;
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lynn.PracticeProject;
@@ -861,7 +877,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QT88ZY57P2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/lynn/Desktop/PracticeProject/PracticeProject/PracticeProject.pch;
+				GCC_PREFIX_HEADER = /Users/lynn/Desktop/github/PracticeProject/PracticeProject/PracticeProject.pch;
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lynn.PracticeProject;

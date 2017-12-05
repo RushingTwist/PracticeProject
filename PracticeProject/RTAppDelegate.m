@@ -2,20 +2,17 @@
 //  RTAppDelegate.m
 //  PracticeProject
 //
-//  Created by 王福林 on 2015/7/25.
+//  Created by lynn on 2015/7/25.
 //  Copyright © 2015年 lynn. All rights reserved.
 //
 
 #import "RTAppDelegate.h"
 
 #import "MRCViewModelServicesImpl.h"
-
 #import "MRCNavigationController.h"
 
 #import "MRCTabBarViewModel.h"
 
-//#import "MRCHomepageViewModel.h"
-//#import "MRCHomepageViewController.h"
 
 @interface RTAppDelegate ()
 
@@ -24,11 +21,6 @@
 @property (nonatomic, strong) MRCViewModel *viewModel;
 
 @property (nonatomic, strong, readwrite) MRCNavigationControllerStack *navigationControllerStack;
-
-//@property (nonatomic, strong) Reachability *reachability;
-//@property (nonatomic, assign, readwrite) NetworkStatus networkStatus;
-
-//@property (nonatomic, copy, readwrite) NSString *adURL;
 
 @end
 
@@ -59,21 +51,7 @@
 #pragma mark - Application configuration
 
 - (void)configureFMDB {
-//    [[FMDatabaseQueue sharedInstance] inDatabase:^(FMDatabase *db) {
-//        NSString *version = [[NSUserDefaults standardUserDefaults] valueForKey:MRCApplicationVersionKey];
-//        if (![version isEqualToString:MRC_APP_VERSION]) {
-//            if (version == nil) {
-//                [SSKeychain deleteAccessToken];
-//                
-//                NSString *path = [[NSBundle mainBundle] pathForResource:@"update_v1_2_0" ofType:@"sql"];
-//                NSString *sql  = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//                
-//                if (![db executeStatements:sql]) {
-//                    MRCLogLastError(db);
-//                }
-//            }
-//        }
-//    }];
+    
 }
 
 - (void)configureAppearance {
@@ -90,26 +68,12 @@
 }
 
 - (void)configureKeyboardManager {
-//    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
-//    IQKeyboardManager.sharedManager.shouldResignOnTouchOutside = YES;
+    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
+    IQKeyboardManager.sharedManager.shouldResignOnTouchOutside = YES;
 }
 
 - (void)configureReachability {
-//    self.reachability = Reachability.reachabilityForInternetConnection;
-//    
-//    RAC(self, networkStatus) = [[[[[NSNotificationCenter defaultCenter]
-//                                   rac_addObserverForName:kReachabilityChangedNotification object:nil]
-//                                  map:^(NSNotification *notification) {
-//                                      return @([notification.object currentReachabilityStatus]);
-//                                  }]
-//                                 startWith:@(self.reachability.currentReachabilityStatus)]
-//                                distinctUntilChanged];
-//    
-//    @weakify(self)
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        @strongify(self)
-//        [self.reachability startNotifier];
-//    });
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

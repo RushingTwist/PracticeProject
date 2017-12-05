@@ -63,7 +63,7 @@
     });
     
     UINavigationController *magicNavigationController = ({
-        RTUIComponentViewController *magicViewController = [[RTUIComponentViewController alloc] initWithViewModel:self.viewModel.uiComponentViewModel];
+        RTMagicViewController *magicViewController = [[RTMagicViewController alloc] initWithViewModel:self.viewModel.magicViewModel];
         
         UIImage *newsImage = [UIImage imageNamed:@"magic"];
         UIImage *newsHLImage = [[UIImage imageNamed:@"magic_highlight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -74,7 +74,7 @@
     });
     
     UINavigationController *expandNavigationController = ({
-        RTUIComponentViewController *expandViewController = [[RTUIComponentViewController alloc] initWithViewModel:self.viewModel.uiComponentViewModel];
+        RTExpandViewController *expandViewController = [[RTExpandViewController alloc] initWithViewModel:self.viewModel.expandViewModel];
         
         UIImage *newsImage = [UIImage imageNamed:@"expand"];
         UIImage *newsHLImage = [[UIImage imageNamed:@"expand_highlight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

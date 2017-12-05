@@ -2,7 +2,7 @@
 //  RTAppDelegate.h
 //  PracticeProject
 //
-//  Created by 王福林 on 2015/7/25.
+//  Created by lynn on 2015/7/25.
 //  Copyright © 2015年 lynn. All rights reserved.
 //
 
