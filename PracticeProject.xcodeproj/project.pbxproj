@@ -361,6 +361,7 @@
 				BA7DFB5E1F27753E00727B1F /* RTAppDelegate.h */,
 				BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */,
 				BA490A651F284714003954EF /* Base */,
+				BAB3221C1FD692B900E7C119 /* Tested */,
 				BAB3221B1FD6923500E7C119 /* Tests */,
 				BA7DFB4F1F276A3100727B1F /* ★★★ Modules */,
 				BA7DFB551F276A3100727B1F /* ★★★ Utils */,
@@ -412,10 +413,10 @@
 		BA7DFB4F1F276A3100727B1F /* ★★★ Modules */ = {
 			isa = PBXGroup;
 			children = (
-				BA7DFB521F276A3100727B1F /* ViewController      ★★★ */,
-				BA7DFB511F276A3100727B1F /* View                      ★★★ */,
+				BA7DFB521F276A3100727B1F /* ViewController              ★★★ */,
+				BA7DFB511F276A3100727B1F /* View                              ★★★ */,
 				BA7DFB501F276A3100727B1F /* ViewModel                    ★★★ */,
-				BA7DFB531F276A3100727B1F /* Model            ★★★ */,
+				BA7DFB531F276A3100727B1F /* Model                            ★★★ */,
 			);
 			name = "★★★ Modules";
 			path = Modules;
@@ -433,7 +434,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		BA7DFB511F276A3100727B1F /* View                      ★★★ */ = {
+		BA7DFB511F276A3100727B1F /* View                              ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490AE31F2873BD003954EF /* UIComponent */,
@@ -441,11 +442,11 @@
 				BA490AE11F2873BD003954EF /* Magic */,
 				BA490AE01F2873BD003954EF /* Expand */,
 			);
-			name = "View                      ★★★";
+			name = "View                              ★★★";
 			path = View;
 			sourceTree = "<group>";
 		};
-		BA7DFB521F276A3100727B1F /* ViewController      ★★★ */ = {
+		BA7DFB521F276A3100727B1F /* ViewController              ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490ADF1F2873AE003954EF /* UIComponent */,
@@ -453,11 +454,11 @@
 				BA490ADD1F2873AE003954EF /* Magic */,
 				BA490ADC1F2873AE003954EF /* Expand */,
 			);
-			name = "ViewController      ★★★";
+			name = "ViewController              ★★★";
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		BA7DFB531F276A3100727B1F /* Model            ★★★ */ = {
+		BA7DFB531F276A3100727B1F /* Model                            ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490ADB1F2873A2003954EF /* UIComponent */,
@@ -465,7 +466,7 @@
 				BA490AD91F2873A2003954EF /* Magic */,
 				BA490AD81F2873A2003954EF /* Expand */,
 			);
-			name = "Model            ★★★";
+			name = "Model                            ★★★";
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
@@ -491,10 +492,17 @@
 		BAB3221B1FD6923500E7C119 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		BAB3221C1FD692B900E7C119 /* Tested */ = {
+			isa = PBXGroup;
+			children = (
 				BAB322181FD691DF00E7C119 /* RTRACOperation.h */,
 				BAB322191FD691DF00E7C119 /* RTRACOperation.m */,
 			);
-			path = Tests;
+			path = Tested;
 			sourceTree = "<group>";
 		};
 		D25C25BC8EBA530E16EBC477 /* Frameworks */ = {
