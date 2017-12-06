@@ -413,7 +413,7 @@
 		BA7DFB4F1F276A3100727B1F /* ★★★ Modules */ = {
 			isa = PBXGroup;
 			children = (
-				BA7DFB521F276A3100727B1F /* ViewController              ★★★ */,
+				BA7DFB521F276A3100727B1F /* Controller                      ★★★ */,
 				BA7DFB511F276A3100727B1F /* View                              ★★★ */,
 				BA7DFB501F276A3100727B1F /* ViewModel                    ★★★ */,
 				BA7DFB531F276A3100727B1F /* Model                            ★★★ */,
@@ -446,7 +446,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		BA7DFB521F276A3100727B1F /* ViewController              ★★★ */ = {
+		BA7DFB521F276A3100727B1F /* Controller                      ★★★ */ = {
 			isa = PBXGroup;
 			children = (
 				BA490ADF1F2873AE003954EF /* UIComponent */,
@@ -454,7 +454,7 @@
 				BA490ADD1F2873AE003954EF /* Magic */,
 				BA490ADC1F2873AE003954EF /* Expand */,
 			);
-			name = "ViewController              ★★★";
+			name = "Controller                      ★★★";
 			path = ViewController;
 			sourceTree = "<group>";
 		};
