@@ -10,6 +10,365 @@
 
 @implementation RTRACOperation
 
+#pragma mark - RAC操作 self
+- (void)merge_concat_then_combineLatest
+{
+    // merge:        任意信号有新值都会转发
+    // concat:       前面的信号sendComplete之后才开始转发后面的信号内容, 所有信号发送的值都会转发
+    // then:         前面的信号sendComplete之后才开始转发后面的信号内容, 但是只转发then后面拼接的信号内容.
+    // combineLatest:两个信号都发送过值才会转发, 并且之后任意信号有新值都会转发
+    // zipWith:   每次两个信号都发送过值才会转发,并zip
+    
+    RACSignal *A = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:@"a"];
+        [subscriber sendCompleted];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    RACSignal *B = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:@"b"];
+        [subscriber sendCompleted];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    //    [[A concat:B] subscribeNext:^(id x) {
+    //        NSLog(@"%@",x);
+    //    }];
+    
+    [[A then:^RACSignal *{
+        return B;
+    }] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+}
+
+- (void)scanWithStart
+{
+    NSArray *arr = [@"0 1 2 3 4" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    // 注意: 区别于aggregateWithStart, scanWithStart会转发每次运算结果, aggregateWithStart只转发最终结果.
+    [[s scanWithStart:@"wfl" reduce:^id(id running, id next) {
+        NSLog(@"running = %@, next = %@",running,next);
+        return [NSString stringWithFormat:@"%@-%@",running,next];
+    }] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //    打印结果:
+    //    running = wfl, next = 0
+    //    wfl-0
+    //    running = wfl-0, next = 1
+    //    wfl-0-1
+    //    running = wfl-0-1, next = 2
+    //    wfl-0-1-2
+    //    running = wfl-0-1-2, next = 3
+    //    wfl-0-1-2-3
+    //    running = wfl-0-1-2-3, next = 4
+    //    wfl-0-1-2-3-4
+}
+
+- (void)aggregateWithStart
+{
+    NSArray *arr = [@"0 1 2 3 4" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    // aggregateWithStart用于从提供的初始值开始依次取两个值进行运算
+    // 相当于python/swift中的reduce操作: (((("wfl" + "1") + "2") + "3") + "4").
+    // 注意: 所有的值都做完运算后, 最终返回一个最终的结果.
+    [[s aggregateWithStart:@"wfl" reduce:^id(id running, id next) {
+        NSLog(@"running = %@, next = %@",running,next);
+        return [NSString stringWithFormat:@"%@-%@",running,next];
+    }] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //    打印结果:
+    //     running = wfl, next = 0
+    //     running = wfl-0, next = 1
+    //     running = wfl-0-1, next = 2
+    //     running = wfl-0-1-2, next = 3
+    //     running = wfl-0-1-2-3, next = 4
+    //     wfl-0-1-2-3-4
+}
+
+- (void)collect
+{
+    NSArray *arr = [@"0 1 2 3 4" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    // collect用于将接受到的值组合成可变数组NSMutableArray
+    [[s collect] subscribeNext:^(id x) {
+        NSLog(@"===%@",[x class]);
+    }];
+}
+
+- (void)throttle
+{
+    NSArray *arr = [@"0 1 1 1 2 3 3 4" componentsSeparatedByString:@" "];
+    
+    __block NSInteger delayTime = 0;
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            
+            delayTime += arc4random()%2 + 1;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                NSLog(@"=================%@",x);
+                [subscriber sendNext:x];
+            });
+        } completed:^{
+            //            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    // 1.throttle用于保证接收到的 所有相邻的信号之前的时长大于interval这个时间 才会被接收, 并且接收的是最新的信号.
+    // 必须注意的是这个interval*会在每次接收到信号后重置*, 所以throttle应该是用在防止在单位时间内重复接收信号.
+    // 如果interval时间内不接收任何信号内容, 过了这个时间, 获取最后发送的信号内容发出.
+    // 感觉不适合用于防止按钮重复点击. 因为从1可以第一次信号并不会被订阅, 就是说点了一次,interval时间后再点一次, 只有后面那次才起作用.
+    [[s throttle:2] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    
+    /*
+     RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+     [arr.rac_sequence.signal subscribeNext:^(id x) {
+     
+     // 这里我想延迟执行sendNext, 但是这样写结果就是所有的sendNext还是几乎一起执行, 只是整体上推迟了1s.
+     // 跟delay一样的效果...
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+     [subscriber sendNext:x];
+     });
+     
+     // currentThead ==== <NSThread: 0x60000027d280>{number = 3, name = (null)}
+     //            NSLog(@"currentThead ==== %@",[NSThread currentThread]);
+     } completed:^{
+     
+     NSLog(@"===========completed================");
+     // 注意因为订阅arr.rac_sequence.signal(相当于遍历)是在子线程进行的, 如果在过程中搞了个延迟操作(延迟sendNext),在订阅的block中会收不到消息. 原因就是下面这句sendCompleted在sendNext(延迟执行)之前已经执行了. 所以下面这句必须注释掉.
+     //            [subscriber sendCompleted];
+     }];
+     return [RACDisposable disposableWithBlock:^{}];
+     }];
+     
+     [s subscribeNext:^(id x) {
+     NSLog(@"%@",x);
+     }];
+     
+     //    [[s throttle:2] subscribeNext:^(id x) {
+     //        NSLog(@"%@",x);
+     //    }];
+     
+     // distinctUntilChanged用于信号发生变化时才会发送, 过滤重复信号
+     //    [[s distinctUntilChanged] subscribeNext:^(id x) {
+     //        NSLog(@"%@",x);
+     //    }];
+     
+     */
+}
+
+- (void)retry
+{
+    NSArray *arr = [@"0 1 2 3 4 5 6 7 8" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        NSLog(@"subscriber ===== %@",subscriber);
+        
+        [[arr.rac_sequence.signal map:^id(NSNumber *value) {
+            if (value.integerValue == 3) {
+                [subscriber sendError:[NSError errorWithDomain:@"error" code:0001 userInfo:nil]];
+            }
+            return value;
+        }] subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{ }];
+    }];
+    
+    // retry慎用, 用了会遇到错误就会重复订阅, subscriber ===== 会重复打印.
+    [[s retry] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [s subscribeError:^(NSError *error) {
+        NSLog(@"error ====== %@",error);
+    }];
+}
+
+- (void)not
+{
+    NSArray *arr = [@"0 1 2 3 4 5 6 7 8" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [arr.rac_sequence.signal subscribeNext:^(NSString *x) {
+            [subscriber sendNext:x.numberValue];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    // startWith以xxx开始, 如果有多个值需要放在前面不妨直接用'concat'
+    // not只针对NSNumber, 取反操作, 非@0变@0, @0变@1
+    [[[s startWith:@0] not] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+- (void)connection
+{
+    NSArray *arr = [@"1 2 3 4 5 6 7 8" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        NSLog(@"=====================%@",subscriber);
+        
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    RACMulticastConnection *connection = [s publish];
+    
+    // 注意必须是对connection.signal进行订阅, 如果还去订阅s那connection就没意义了
+    // 订阅coneection.subject
+    [connection.signal subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [connection.signal subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    // active, 这里才会真正去订阅s(不会有副作用的原因), 并将subject作为subscriber传进去, 由subject转发内容.
+    [connection connect];
+    
+    // RACMulticastConnection通过利用subject可以先订阅后发送值来完成消除副作用
+}
+
+- (void)take {
+    NSArray *arr = [@"1 2 3 4 5 6 7 8" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        NSLog(@"=====================%@",subscriber);
+        
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:x];
+            NSLog(@"+++++++++++++%@",x);
+            
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }];
+    
+    //    [[s take:3] subscribeNext:^(id x) {
+    //        NSLog(@"%@",x);
+    //    }];
+    
+    [[s takeUntilBlock:^BOOL(id x) {
+        return [x isEqualToString:@"5"];
+    }] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [[s takeLast:2] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //    [s subscribeNext:^(id x) {
+    //        NSLog(@"+++++++++++++%@",x);
+    //    }];
+}
+
+- (void)flattenMap
+{
+    NSArray *arr = [@"1 2 3 4 5 6" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [[[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:[RACSignal return:x]];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }] flattenMap:^RACStream *(id value) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            
+            [value subscribeNext:^(id x) {
+                [subscriber sendNext:x];
+            }];
+            return [RACDisposable disposableWithBlock:^{
+                
+            }];
+        }];
+    }] ignore:@"1"] ignoreValues];
+    
+    [s subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+- (void)filter {
+    
+    NSArray *arr = [@"1 2 3 4 5 6" componentsSeparatedByString:@" "];
+    
+    RACSignal *s = [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        [arr.rac_sequence.signal subscribeNext:^(id x) {
+            [subscriber sendNext:[RACSignal return:x]];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{}];
+    }] filter:^BOOL(NSString *value) {
+        //        return value.integerValue % 2 == 0;
+        return YES;
+    }] flatten:0];
+    
+    [s subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+#pragma mark - other's
 
 -(void)createSignalOperation
 {
