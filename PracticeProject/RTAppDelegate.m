@@ -7,7 +7,7 @@
 //
 
 #import "RTAppDelegate.h"
-
+#import "TestViewController.h"
 
 @interface RTAppDelegate ()
 
@@ -26,9 +26,10 @@
     [self configureReachability];
 
     self.window = [UIWindow new];
-    UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = [UIColor redColor];
-    self.window.rootViewController = vc;
+    TestViewController *vc = [TestViewController new];
+//    vc.view.backgroundColor = [UIColor redColor];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     [self configureAppearance];
