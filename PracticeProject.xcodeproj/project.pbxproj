@@ -19,6 +19,7 @@
 		BAED44A12099DC8500397F3F /* JSPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = BAED449F2099DC8500397F3F /* JSPatch.js */; };
 		BAED44A62099DE2900397F3F /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED44A52099DE2900397F3F /* TestViewController.m */; };
 		BAED44A82099E0D200397F3F /* Test List.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAED44A72099E0D200397F3F /* Test List.plist */; };
+		BAED44AC2099E4D500397F3F /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED44AB2099E4D500397F3F /* Aspects.m */; };
 		D41ADCC652F2B6D1D5C93BA0 /* libPods-PracticeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E538F72997E14508EAB975E /* libPods-PracticeProject.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,8 @@
 		BAED44A42099DE2900397F3F /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		BAED44A52099DE2900397F3F /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		BAED44A72099E0D200397F3F /* Test List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test List.plist"; sourceTree = "<group>"; };
+		BAED44AA2099E4D500397F3F /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		BAED44AB2099E4D500397F3F /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,7 @@
 				BAED44A42099DE2900397F3F /* TestViewController.h */,
 				BAED44A52099DE2900397F3F /* TestViewController.m */,
 				BAED44A72099E0D200397F3F /* Test List.plist */,
+				BAED44A92099E4C500397F3F /* Aspects */,
 				BAED44982099DC2400397F3F /* JsPatch */,
 				BAB3221C1FD692B900E7C119 /* Rac */,
 				BA7DFB1B1F2769D600727B1F /* Supporting Files */,
@@ -198,6 +202,15 @@
 				BAED449F2099DC8500397F3F /* JSPatch.js */,
 			);
 			path = JSPatch;
+			sourceTree = "<group>";
+		};
+		BAED44A92099E4C500397F3F /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				BAED44AA2099E4D500397F3F /* Aspects.h */,
+				BAED44AB2099E4D500397F3F /* Aspects.m */,
+			);
+			path = Aspects;
 			sourceTree = "<group>";
 		};
 		D25C25BC8EBA530E16EBC477 /* Frameworks */ = {
@@ -398,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAED44A62099DE2900397F3F /* TestViewController.m in Sources */,
+				BAED44AC2099E4D500397F3F /* Aspects.m in Sources */,
 				BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */,
 				BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */,
 				BAED449B2099DC5900397F3F /* JsPatchViewController.m in Sources */,

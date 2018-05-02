@@ -8,6 +8,7 @@
 
 #import "RTAppDelegate.h"
 #import "TestViewController.h"
+#import "Aspects.h"
 
 @interface RTAppDelegate ()
 
@@ -21,9 +22,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self configureFMDB];
-    [self configureAppearance];
+//    [self configureAppearance];
     [self configureKeyboardManager];
     [self configureReachability];
+    
+//    [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo){
+//        UIViewController *vc = (UIViewController *)aspectInfo.instance;
+//        vc.view.backgroundColor = [UIColor whiteColor];
+//    } error:nil];
 
     self.window = [UIWindow new];
     TestViewController *vc = [TestViewController new];
@@ -31,8 +37,6 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
-    
-    [self configureAppearance];
     
     return YES;
 }
