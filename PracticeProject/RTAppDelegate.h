@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MRCNavigationControllerStack.h"
 
 @interface RTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, strong, readonly) MRCNavigationControllerStack *navigationControllerStack;
 
 @end

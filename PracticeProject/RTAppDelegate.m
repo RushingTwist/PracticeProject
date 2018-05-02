@@ -8,19 +8,10 @@
 
 #import "RTAppDelegate.h"
 
-#import "MRCViewModelServicesImpl.h"
-#import "MRCNavigationController.h"
-
-#import "MRCTabBarViewModel.h"
-
 
 @interface RTAppDelegate ()
 
 
-@property (nonatomic, strong) MRCViewModelServicesImpl *services;
-@property (nonatomic, strong) MRCViewModel *viewModel;
-
-@property (nonatomic, strong, readwrite) MRCNavigationControllerStack *navigationControllerStack;
 
 @end
 
@@ -34,12 +25,10 @@
     [self configureKeyboardManager];
     [self configureReachability];
 
-    self.services = [[MRCViewModelServicesImpl alloc] init];
-    self.navigationControllerStack = [[MRCNavigationControllerStack alloc] initWithServices:self.services];
-    
-    MRCTabBarViewModel *tabBarViewModel = [[MRCTabBarViewModel alloc] initWithServices:self.services params:nil];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.services resetRootViewModel: tabBarViewModel];
+    self.window = [UIWindow new];
+    UIViewController *vc = [UIViewController new];
+    vc.view.backgroundColor = [UIColor redColor];
+    self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
     [self configureAppearance];
