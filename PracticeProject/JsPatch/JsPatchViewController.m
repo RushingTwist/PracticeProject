@@ -18,7 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self test_jspatch];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+//    [self test_jspatch];
+    
 }
 
 - (void)test_jspatch

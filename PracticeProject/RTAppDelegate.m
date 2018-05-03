@@ -26,10 +26,6 @@
     [self configureKeyboardManager];
     [self configureReachability];
     
-//    [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo){
-//        UIViewController *vc = (UIViewController *)aspectInfo.instance;
-//        vc.view.backgroundColor = [UIColor whiteColor];
-//    } error:nil];
 
     self.window = [UIWindow new];
     TestViewController *vc = [TestViewController new];
@@ -41,6 +37,16 @@
     return YES;
 }
 
+- (void)testAspect
+{
+    // hook UIViewController's viewDidLoad 断点发现居然拦截了其他例如UIAlertController,UIApplicationRotationFollowingController,UIInputWindowController等控制器........会导致一些异常现象.
+    // 排查后发现是JSPatch搞的鬼, JSPatch和Aspect最好不要一起使用, 否则会出现莫名其妙的问题或崩溃.
+    [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        UIViewController *vc = (UIViewController *)aspectInfo.instance;
+        vc.view.backgroundColor = [UIColor whiteColor];
+    } error:nil];
+
+}
 
 #pragma mark - Application configuration
 
