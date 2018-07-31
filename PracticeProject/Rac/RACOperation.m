@@ -6,9 +6,9 @@
 //  Copyright © 2017年 lynn. All rights reserved.
 //
 
-#import "RTRACOperation.h"
+#import "RACOperation.h"
 
-@implementation RTRACOperation
+@implementation RACOperation
 
 #pragma mark - RAC操作 self
 - (void)merge_concat_then_combineLatest

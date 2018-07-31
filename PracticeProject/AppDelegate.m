@@ -6,18 +6,18 @@
 //  Copyright © 2015年 lynn. All rights reserved.
 //
 
-#import "RTAppDelegate.h"
+#import "AppDelegate.h"
 #import "TestViewController.h"
 #import "Aspects.h"
 #import "ScreenRecordingDetector.h"
 
-@interface RTAppDelegate ()
+@interface AppDelegate ()
 
 
 
 @end
 
-@implementation RTAppDelegate
+@implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

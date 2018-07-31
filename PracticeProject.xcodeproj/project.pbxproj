@@ -15,8 +15,8 @@
 		BA7DFB2B1F2769D600727B1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7DFB291F2769D600727B1F /* LaunchScreen.storyboard */; };
 		BA7DFB361F2769D600727B1F /* PracticeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB351F2769D600727B1F /* PracticeProjectTests.m */; };
 		BA7DFB411F2769D600727B1F /* PracticeProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB401F2769D600727B1F /* PracticeProjectUITests.m */; };
-		BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */; };
-		BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB322191FD691DF00E7C119 /* RTRACOperation.m */; };
+		BA7DFB601F27753E00727B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB5F1F27753E00727B1F /* AppDelegate.m */; };
+		BAB3221A1FD691DF00E7C119 /* RACOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB322191FD691DF00E7C119 /* RACOperation.m */; };
 		BAED449B2099DC5900397F3F /* JsPatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED449A2099DC5900397F3F /* JsPatchViewController.m */; };
 		BAED44A02099DC8500397F3F /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED449D2099DC8500397F3F /* JPEngine.m */; };
 		BAED44A12099DC8500397F3F /* JSPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = BAED449F2099DC8500397F3F /* JSPatch.js */; };
@@ -63,11 +63,11 @@
 		BA7DFB3C1F2769D600727B1F /* PracticeProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticeProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7DFB401F2769D600727B1F /* PracticeProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PracticeProjectUITests.m; sourceTree = "<group>"; };
 		BA7DFB421F2769D600727B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA7DFB5E1F27753E00727B1F /* RTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAppDelegate.h; sourceTree = "<group>"; };
-		BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAppDelegate.m; sourceTree = "<group>"; };
+		BA7DFB5E1F27753E00727B1F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BA7DFB5F1F27753E00727B1F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BA7DFB621F27766300727B1F /* PracticeProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PracticeProject.pch; sourceTree = "<group>"; };
-		BAB322181FD691DF00E7C119 /* RTRACOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTRACOperation.h; sourceTree = "<group>"; };
-		BAB322191FD691DF00E7C119 /* RTRACOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTRACOperation.m; sourceTree = "<group>"; };
+		BAB322181FD691DF00E7C119 /* RACOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACOperation.h; sourceTree = "<group>"; };
+		BAB322191FD691DF00E7C119 /* RACOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACOperation.m; sourceTree = "<group>"; };
 		BAED44992099DC5900397F3F /* JsPatchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsPatchViewController.h; sourceTree = "<group>"; };
 		BAED449A2099DC5900397F3F /* JsPatchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JsPatchViewController.m; sourceTree = "<group>"; };
 		BAED449D2099DC8500397F3F /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		BA7DFB1A1F2769D600727B1F /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
-				BA7DFB5E1F27753E00727B1F /* RTAppDelegate.h */,
-				BA7DFB5F1F27753E00727B1F /* RTAppDelegate.m */,
+				BA7DFB5E1F27753E00727B1F /* AppDelegate.h */,
+				BA7DFB5F1F27753E00727B1F /* AppDelegate.m */,
 				BAED44A42099DE2900397F3F /* TestViewController.h */,
 				BAED44A52099DE2900397F3F /* TestViewController.m */,
 				BAED44A72099E0D200397F3F /* Test List.plist */,
@@ -208,8 +208,8 @@
 		BAB3221C1FD692B900E7C119 /* Rac */ = {
 			isa = PBXGroup;
 			children = (
-				BAB322181FD691DF00E7C119 /* RTRACOperation.h */,
-				BAB322191FD691DF00E7C119 /* RTRACOperation.m */,
+				BAB322181FD691DF00E7C119 /* RACOperation.h */,
+				BAB322191FD691DF00E7C119 /* RACOperation.m */,
 			);
 			path = Rac;
 			sourceTree = "<group>";
@@ -444,9 +444,9 @@
 				BAED44A62099DE2900397F3F /* TestViewController.m in Sources */,
 				BA7CCE6720B40908005C8DD9 /* PubKeyHelper.m in Sources */,
 				BAED44AC2099E4D500397F3F /* Aspects.m in Sources */,
-				BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */,
+				BA7DFB601F27753E00727B1F /* AppDelegate.m in Sources */,
 				BA6D700F20F44B45004FF4AB /* ScreenRecordingDetector.m in Sources */,
-				BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */,
+				BAB3221A1FD691DF00E7C119 /* RACOperation.m in Sources */,
 				BAED449B2099DC5900397F3F /* JsPatchViewController.m in Sources */,
 				BAED44A02099DC8500397F3F /* JPEngine.m in Sources */,
 				BA7DFB1D1F2769D600727B1F /* main.m in Sources */,

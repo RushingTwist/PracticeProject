@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RTRACOperation : NSObject
+@interface RACOperation : NSObject
 
 @end
