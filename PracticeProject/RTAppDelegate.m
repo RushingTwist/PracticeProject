@@ -9,6 +9,7 @@
 #import "RTAppDelegate.h"
 #import "TestViewController.h"
 #import "Aspects.h"
+#import "ScreenRecordingDetector.h"
 
 @interface RTAppDelegate ()
 
@@ -25,6 +26,8 @@
 //    [self configureAppearance];
     [self configureKeyboardManager];
     [self configureReachability];
+    
+    [ScreenRecordingDetector triggerDetectorTimer];
     
 
     self.window = [UIWindow new];

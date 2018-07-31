@@ -7,6 +7,7 @@
 //
 
 #import "TestViewController.h"
+#import "PubKeyHelper.h"
 
 @interface TestViewController ()
 
@@ -20,7 +21,11 @@
     
     self.title = @"testtttt";
     self.view.backgroundColor = [UIColor blackColor];
+    
+    
+    
 }
+
 
 #pragma mark - UITableViweDelegate,UITableViweDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA6D700F20F44B45004FF4AB /* ScreenRecordingDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6D700620F44B45004FF4AB /* ScreenRecordingDetector.m */; };
+		BA7CCE6720B40908005C8DD9 /* PubKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7CCE6620B40908005C8DD9 /* PubKeyHelper.m */; };
+		BA7CCE6920B40941005C8DD9 /* a.puk in Resources */ = {isa = PBXBuildFile; fileRef = BA7CCE6820B40941005C8DD9 /* a.puk */; };
 		BA7DFB1D1F2769D600727B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7DFB1C1F2769D600727B1F /* main.m */; };
 		BA7DFB281F2769D600727B1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7DFB271F2769D600727B1F /* Assets.xcassets */; };
 		BA7DFB2B1F2769D600727B1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7DFB291F2769D600727B1F /* LaunchScreen.storyboard */; };
@@ -44,6 +47,11 @@
 		0DC278619CAF8940641F31D1 /* Pods-PracticeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PracticeProject/Pods-PracticeProject.release.xcconfig"; sourceTree = "<group>"; };
 		4E538F72997E14508EAB975E /* libPods-PracticeProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PracticeProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D949701D78B2F402BCBD6A /* Pods-PracticeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PracticeProject/Pods-PracticeProject.debug.xcconfig"; sourceTree = "<group>"; };
+		BA6D700520F44B45004FF4AB /* ScreenRecordingDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRecordingDetector.h; sourceTree = "<group>"; };
+		BA6D700620F44B45004FF4AB /* ScreenRecordingDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRecordingDetector.m; sourceTree = "<group>"; };
+		BA7CCE6520B40908005C8DD9 /* PubKeyHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubKeyHelper.h; sourceTree = "<group>"; };
+		BA7CCE6620B40908005C8DD9 /* PubKeyHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PubKeyHelper.m; sourceTree = "<group>"; };
+		BA7CCE6820B40941005C8DD9 /* a.puk */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.puk; sourceTree = "<group>"; };
 		BA7DFB181F2769D600727B1F /* PracticeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7DFB1C1F2769D600727B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BA7DFB271F2769D600727B1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +115,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BA6D700420F44B45004FF4AB /* ScreenCaptureDetector */ = {
+			isa = PBXGroup;
+			children = (
+				BA6D700520F44B45004FF4AB /* ScreenRecordingDetector.h */,
+				BA6D700620F44B45004FF4AB /* ScreenRecordingDetector.m */,
+			);
+			name = ScreenCaptureDetector;
+			path = ScreenCaptureDetector/ScreenCaptureDetector;
+			sourceTree = "<group>";
+		};
+		BA7CCE6420B408D5005C8DD9 /* PubKey */ = {
+			isa = PBXGroup;
+			children = (
+				BA7CCE6820B40941005C8DD9 /* a.puk */,
+				BA7CCE6520B40908005C8DD9 /* PubKeyHelper.h */,
+				BA7CCE6620B40908005C8DD9 /* PubKeyHelper.m */,
+			);
+			path = PubKey;
+			sourceTree = "<group>";
+		};
 		BA7DFB0F1F2769D600727B1F = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +165,8 @@
 				BAED44A42099DE2900397F3F /* TestViewController.h */,
 				BAED44A52099DE2900397F3F /* TestViewController.m */,
 				BAED44A72099E0D200397F3F /* Test List.plist */,
+				BA6D700420F44B45004FF4AB /* ScreenCaptureDetector */,
+				BA7CCE6420B408D5005C8DD9 /* PubKey */,
 				BAED44A92099E4C500397F3F /* Aspects */,
 				BAED44982099DC2400397F3F /* JsPatch */,
 				BAB3221C1FD692B900E7C119 /* Rac */,
@@ -336,6 +366,7 @@
 			files = (
 				BAED44A12099DC8500397F3F /* JSPatch.js in Resources */,
 				BAED44A82099E0D200397F3F /* Test List.plist in Resources */,
+				BA7CCE6920B40941005C8DD9 /* a.puk in Resources */,
 				BA7DFB2B1F2769D600727B1F /* LaunchScreen.storyboard in Resources */,
 				BA7DFB281F2769D600727B1F /* Assets.xcassets in Resources */,
 			);
@@ -411,8 +442,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAED44A62099DE2900397F3F /* TestViewController.m in Sources */,
+				BA7CCE6720B40908005C8DD9 /* PubKeyHelper.m in Sources */,
 				BAED44AC2099E4D500397F3F /* Aspects.m in Sources */,
 				BA7DFB601F27753E00727B1F /* RTAppDelegate.m in Sources */,
+				BA6D700F20F44B45004FF4AB /* ScreenRecordingDetector.m in Sources */,
 				BAB3221A1FD691DF00E7C119 /* RTRACOperation.m in Sources */,
 				BAED449B2099DC5900397F3F /* JsPatchViewController.m in Sources */,
 				BAED44A02099DC8500397F3F /* JPEngine.m in Sources */,
