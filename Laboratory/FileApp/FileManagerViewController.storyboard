@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--File Manager View Controller-->
+        <scene sceneID="pO0-yS-6kn">
+            <objects>
+                <viewController storyboardIdentifier="FileManagerViewController" id="o2y-Xi-nsm" customClass="FileManagerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Vj-NC-Zof">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXL-T7-7S1">
+                                <rect key="frame" x="90" y="200" width="195" height="70"/>
+                                <color key="backgroundColor" red="0.094568063859090848" green="0.93675113341968907" blue="0.23427557165965374" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="xri-e8-hln"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="save file to File app">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveFile" destination="o2y-Xi-nsm" eventType="touchUpInside" id="g3M-8o-WPe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jb-Hb-G5t">
+                                <rect key="frame" x="90" y="300" width="195" height="70"/>
+                                <color key="backgroundColor" red="0.81097998772826718" green="0.52675508611780741" blue="0.93675113341968907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="get file from File app">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showDocumentPickerVC" destination="o2y-Xi-nsm" eventType="touchUpInside" id="buJ-Xf-5bU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7jb-Hb-G5t" firstAttribute="height" secondItem="OXL-T7-7S1" secondAttribute="height" id="WoL-NW-bOP"/>
+                            <constraint firstItem="OXL-T7-7S1" firstAttribute="leading" secondItem="yLu-vz-90p" secondAttribute="leading" constant="90" id="a4B-Bi-ueh"/>
+                            <constraint firstItem="7jb-Hb-G5t" firstAttribute="width" secondItem="OXL-T7-7S1" secondAttribute="width" id="f07-sf-Kgj"/>
+                            <constraint firstItem="yLu-vz-90p" firstAttribute="trailing" secondItem="OXL-T7-7S1" secondAttribute="trailing" constant="90" id="hlG-W8-fSs"/>
+                            <constraint firstItem="7jb-Hb-G5t" firstAttribute="leading" secondItem="OXL-T7-7S1" secondAttribute="leading" id="lxT-V7-2Nk"/>
+                            <constraint firstItem="OXL-T7-7S1" firstAttribute="top" secondItem="yLu-vz-90p" secondAttribute="top" constant="180" id="xB8-Ry-Afj"/>
+                            <constraint firstItem="7jb-Hb-G5t" firstAttribute="top" secondItem="OXL-T7-7S1" secondAttribute="bottom" constant="30" id="yAE-ND-LWk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yLu-vz-90p"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9za-qF-6lK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804" y="-260"/>
+        </scene>
+    </scenes>
+</document>

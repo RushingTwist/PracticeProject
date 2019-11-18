@@ -19,5 +19,16 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSString *cls = @"FileManagerViewController";
+    
+    UIStoryboard *main=[UIStoryboard storyboardWithName:cls bundle:nil];
+    UIViewController *vc = [main instantiateViewControllerWithIdentifier:cls];
+   
+    if (!vc) {
+        vc = [[NSClassFromString(cls) class] new];
+    }
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

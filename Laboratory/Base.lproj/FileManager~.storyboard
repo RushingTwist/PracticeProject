@@ -26,6 +26,21 @@
             </objects>
             <point key="canvasLocation" x="908" y="208.24587706146929"/>
         </scene>
+        <!--File Manager View Controller-->
+        <scene sceneID="pO0-yS-6kn">
+            <objects>
+                <viewController id="o2y-Xi-nsm" customClass="FileManagerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Vj-NC-Zof">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yLu-vz-90p"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9za-qF-6lK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884" y="187"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CUk-WA-3aJ">
             <objects>
